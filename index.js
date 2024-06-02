@@ -13,6 +13,8 @@ app.use(express.json());
 
 connectToDatabase();
 
-app.use("/tasks", TaskRouter);
-
-app.listen(8000, console.log("Listen port http://localhost:8000/"));
+// Use process.env.PORT para a porta do servidor no Heroku
+const PORT = process.env.PORT || 8000; // Porta 8000 para uso local
+app.listen(PORT, () => {
+    console.log(`Listen port http://localhost:${PORT}/`);
+});
